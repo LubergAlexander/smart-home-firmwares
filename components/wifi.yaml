@@ -1,0 +1,2 @@
+ssid: !secret WIFI_NAME
+password: !secret WIFI_PASSWORD

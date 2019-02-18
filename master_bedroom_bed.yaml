@@ -1,0 +1,22 @@
+substitutions:
+  devicename: master_bedroom_bed
+  upper_devicename: "Master Bedroom Bed"
+
+esphome:
+  name: master_bedroom_bed
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+light:
+  - name: $upper_devicename
+    platform: fastled_clockless
+    pin: D2
+    chipset: WS2812B
+    rgb_order: GRB
+    num_leds: 225
+    effects: !include components/effects.yaml

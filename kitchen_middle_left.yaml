@@ -1,0 +1,19 @@
+substitutions:
+  devicename: kitchen_middle_left
+  upper_devicename: "Kitchen Middle Left"
+
+esphome: !include components/esphome_restore_on_boot.yaml
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+light:
+  - name: $upper_devicename
+    id: led_strip
+    platform: fastled_clockless
+    pin: D2
+    chipset: WS2812B
+    rgb_order: GRB
+    num_leds: 153
+    effects: !include components/effects.yaml

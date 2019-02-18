@@ -1,0 +1,4 @@
+name: $devicename
+platform: ESP8266
+board: d1_mini
+esphome_core_version: dev

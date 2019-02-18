@@ -1,0 +1,18 @@
+substitutions:
+  devicename: desk_lamp
+  upper_devicename: "Desk Lamp"
+
+esphome: !include components/esphome.yaml
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+light:
+  - name: $upper_devicename
+    platform: fastled_clockless
+    pin: D2
+    chipset: WS2812B
+    rgb_order: GRB
+    num_leds: 23
+    effects: !include components/effects.yaml

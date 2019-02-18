@@ -1,0 +1,13 @@
+name: $devicename
+platform: ESP8266
+board: d1_mini
+esphome_core_version: dev
+
+on_boot:
+  then:
+  - light.turn_on:
+      id: led_strip
+      brightness: 0.6
+      red: 1.0
+      green: 0.78
+      blue: 0.73
