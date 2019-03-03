@@ -1,6 +1,6 @@
 # Overview
 
-A collection of firmwares for various smart home devices based on (esphome)[https://esphome.io]
+A collection of firmwares for various smart home devices based on [esphome](https://esphome.io)
 
 # Setup
 Add components/secrets.yaml with various credentials & mqtt broker location.
