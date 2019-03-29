@@ -1,0 +1,15 @@
+substitutions:
+  devicename: night_light
+  upper_devicename: "Night Light"
+
+esphome: !include components/esphome.yaml
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+switch:
+  - name: $upper_devicename
+    platform: gpio
+    pin: D0
+    inverted: True
