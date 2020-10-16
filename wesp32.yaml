@@ -1,0 +1,45 @@
+substitutions:
+  devicename: wesp32
+  upper_devicename: "wesp32"
+
+esphome: !include components/esphome_esp32.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO16
+  mdio_pin: GPIO17
+  clk_mode: GPIO0_IN
+  phy_addr: 0
+
+i2c:
+  sda: 15
+  scl: 4
+
+sensor:
+  - platform: bme280
+    temperature:
+      name: "wesp32 Temperature"
+      oversampling: 16x
+    pressure:
+      name: "wesp32 Pressure"
+    humidity:
+      name: "wesp32 Humidity"
+    address: 0x76
+    update_interval: 30s
+
+  - platform: adc
+    pin: A0
+    name: "wesp32 Illuminance"
+    unit_of_measurement: lx
+    filters:
+      - lambda: |-
+          return (x / 10000.0) * 2000000.0;
+
+binary_sensor:
+  - platform: gpio
+    pin: 34
+    name: "wesp32 Motion Sensor"
+    device_class: motion

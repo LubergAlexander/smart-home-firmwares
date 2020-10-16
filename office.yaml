@@ -1,0 +1,60 @@
+substitutions:
+  devicename: office
+  upper_devicename: "Office"
+
+esphome: !include components/esphome_swifitch.yaml
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+
+switch:
+  - platform: gpio
+    name: "Office Light"
+    pin:
+      number: GPIO5
+      inverted: True
+    id: relay1
+
+  - platform: gpio
+    name: "Office Fireplace"
+    pin:
+      number: GPIO2
+      inverted: True
+    id: relay2
+
+binary_sensor:
+  - platform: gpio
+    id: button1
+    pin:
+      number: GPIO4
+      mode: INPUT_PULLUP
+      inverted: True
+
+    on_press:
+      then:
+        - switch.toggle: relay1
+
+    on_release:
+      then:
+        - switch.toggle: relay1
+
+
+  - platform: gpio
+    id: button2
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      then:
+        - switch.toggle: relay2
+
+    on_release:
+      then:
+        - switch.toggle: relay2
+
+status_led:
+  pin:
+    number: GPIO12

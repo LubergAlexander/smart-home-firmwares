@@ -12,7 +12,5 @@ light:
   - name: $upper_devicename
     platform: fastled_clockless
     pin: D2
-    chipset: WS2812B
-    rgb_order: GRB
+    chipset: SK6812
     num_leds: 23
-    effects: !include components/effects.yaml

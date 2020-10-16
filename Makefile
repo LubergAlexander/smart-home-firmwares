@@ -10,4 +10,8 @@ kill:
 upload:
 	for config in *.yaml; do esphome $$config upload --upload-port $${config%.*}.local; done;
 
+upload_kitchen:
+	for config in kitchen_*.yaml; do esphome $$config upload --upload-port $${config%.*}.local; done;
+
+
 all: kill build upload

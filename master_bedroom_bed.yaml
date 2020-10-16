@@ -18,5 +18,5 @@ light:
     pin: D2
     chipset: WS2812B
     rgb_order: GRB
-    num_leds: 225
+    num_leds: 500
     effects: !include components/effects.yaml

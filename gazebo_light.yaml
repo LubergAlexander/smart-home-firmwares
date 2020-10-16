@@ -1,0 +1,30 @@
+substitutions:
+  devicename: gazebo_light
+  upper_devicename: "Gazebo Light"
+
+esphome: !include components/esphome.yaml
+wifi: !include components/wifi.yaml
+mqtt: !include components/mqtt.yaml
+ota: !include components/ota.yaml
+logger: !include components/logger.yaml
+
+binary_sensor:
+  - platform: gpio
+    name: $upper_devicename
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    name: $upper_devicename
+    pin: GPIO12
+    id: relay
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
